@@ -1,0 +1,87 @@
+lgebraic chess notation is used to record the moves in a game of chess.  This notation can also be used to describe moves in the game I made last month called Dungeon.  Ultimately, I.d like to develop a small computer version of the board game in actionscript 3 to test the game mechanics.
+
+As a first step, I wrote this pathfinder function that takes start/end points in algebraic notation and returns a list of moves between the start and end also in algebraic notation.  For example:  start is at a1 and end is at a5.  The function returns a2,a3,a4,a5.  It also takes into account for obstacles and routes the path around it successfully.
+
+This as3 package uses the baseoneonline A* pathfinding algorithm (included).
+
+A concise guide to the classes:
+
+Grid
+The Grid class takes a begin point and an end point expressed in algebraic notation and returns an array of points in a path also expressed in algebraic notation. Also takes moves as a parameter to limit output to a certain number of moves. A private method is included to set walkable/non-walkable spaces on the grid.
+
+public methods:
+
+Grid(begin:String, end:String, moves:int)
+constructor for Grid instances.
+
+public properties:
+
+solve:Array
+An array of Strings representing the correct path between begin and end.
+
+Locations
+A static class holding various locations of items, players, and optional portals. As many items and players can be added as necessary.
+
+public methods
+
+getItem1()
+returns the location of a generic .item1.
+
+setItem1(loc:String)
+sets the location of a generic .item1.
+
+getItem2()
+returns the location of a generic .item2.
+
+setItem2(loc:String)
+sets the location of a generic .item2.
+
+getPlayer1()
+returns the location of a generic .player1.
+
+setPlayer1(loc:String)
+sets the location of a generic .player1.
+
+getPlayer2()
+returns the location of a generic .player2.
+
+getPortals()
+sets the location of a generic .portals.
+
+setPortals(loc:String)
+sets the location of a generic .portals.
+
+getTurn()
+gets the current turn number
+
+setTurn(num:uint)
+sets the turn number
+
+LevelEditor
+The LevelEditor class is useful when constructing maps of walkable/un-walkable squares on your grid.  To use, create a temporary LevelEditor object and click on each square (a bitmap overlay will be necessary).  Copy the entire output trace and paste into the appropriate method of the Grid class.
+
+public methods:
+
+LevelEditor(square:String)
+constructor for LevelEditor instances.
+
+CoordConvert
+The CoordConvert class does the actual conversion from the algebraic notation to screen and array coordinates that can be used by the baseoneonline A* pathfinder and various mouse functions.
+
+public methods:
+
+ToUnicodeNum(char:String)
+takes a lowercase alphabetic character and returns the proper unicode number.
+
+AlgebraToScreen(loc:String)
+converts a location represented by algebraic notation to an x,y screen coordinate.
+
+AlgebraToArray(loc:String)
+converts a location represented by algebraic notation to a zero-based indexed array.
+
+AlgebraSplit(loc:String)
+Splits a string representing a location in algebraic notation into an array of the separated letter and number (along with unicode).
+
+To see it in action, download the .zip folder and extract the algpath folder within. Simply import the algpath package and create a Grid object with your chosen parameters.
+
+A sample implementation has been provided.  Open AlgpathTest.as and change the parameters in the constructor to set start and end points.  The result will trace out in the output window in the Flash IDE.  From here it.s trivial to implement it in a game or other application.
