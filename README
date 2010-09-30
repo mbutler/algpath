@@ -1,4 +1,4 @@
-lgebraic chess notation is used to record the moves in a game of chess.  This notation can also be used to describe moves in the game I made last month called Dungeon.  Ultimately, I.d like to develop a small computer version of the board game in actionscript 3 to test the game mechanics.
+Algebraic chess notation is used to record the moves in a game of chess.  This notation can also be used to describe moves in the game I made last month called Dungeon.  Ultimately, I.d like to develop a small computer version of the board game in actionscript 3 to test the game mechanics.
 
 As a first step, I wrote this pathfinder function that takes start/end points in algebraic notation and returns a list of moves between the start and end also in algebraic notation.  For example:  start is at a1 and end is at a5.  The function returns a2,a3,a4,a5.  It also takes into account for obstacles and routes the path around it successfully.
 
